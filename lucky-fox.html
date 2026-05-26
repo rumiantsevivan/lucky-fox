@@ -703,20 +703,26 @@ button { font: inherit; cursor: pointer; }
   font: inherit;
   font-family: var(--body);
   font-size: 16px;
+  line-height: 1.4;
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 14px 16px;
   width: 100%;
-  /* Фикс iOS Safari: пустой <input type="time"> схлопывается по высоте,
-     из-за чего ячейки «Дата» и «Время» оказываются разной высоты.
-     Жёстко уравниваем. */
   min-height: 52px;
+  box-sizing: border-box;
   outline: none;
   transition: border-color .15s, background .15s, box-shadow .15s;
   -webkit-appearance: none;
   appearance: none;
+}
+/* Фикс iOS Safari: пустой <input type="time"> схлопывается по высоте,
+   из-за чего «Дата» и «Время» оказывались разными. Жёстко уравниваем. */
+input[type="time"].field__input,
+input[type="date"].field__input {
+  height: 52px;
+  line-height: 22px;
 }
 .field__input::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
 .field__input:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
@@ -1249,8 +1255,31 @@ window.SITE_CONFIG = {
   ],
 
   // === Мастера ===
-  // Пока клиент не пришлёт фото — массив пуст, секция автоматически скрывается.
-  masters: [],
+  // ⚠️ Сейчас stock-фото и имена сгенерированы — заменим на реальных мастеров,
+  // когда клиент пришлёт фото и подтвердит специализации.
+  // Имена взяты из отзывов: Алина, Жанна, Саша, Лёха.
+  masters: [
+    {
+      name: "Алина",
+      role: "Мастер маникюра",
+      photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&q=85",
+    },
+    {
+      name: "Жанна",
+      role: "Стилист-парикмахер",
+      photo: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=85",
+    },
+    {
+      name: "Саша",
+      role: "Бровист · лэшмейкер",
+      photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=85",
+    },
+    {
+      name: "Лёха",
+      role: "Барбер",
+      photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85",
+    },
+  ],
 
   // === Адрес и режим ===
   address: "Москва, Переулок Ангелов, 6, 1 этаж, район Митино",

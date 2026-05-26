@@ -687,20 +687,26 @@ button { font: inherit; cursor: pointer; }
   font: inherit;
   font-family: var(--body);
   font-size: 16px;
+  line-height: 1.4;
   color: var(--ink);
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 14px 16px;
   width: 100%;
-  /* Фикс iOS Safari: пустой <input type="time"> схлопывается по высоте,
-     из-за чего ячейки «Дата» и «Время» оказываются разной высоты.
-     Жёстко уравниваем. */
   min-height: 52px;
+  box-sizing: border-box;
   outline: none;
   transition: border-color .15s, background .15s, box-shadow .15s;
   -webkit-appearance: none;
   appearance: none;
+}
+/* Фикс iOS Safari: пустой <input type="time"> схлопывается по высоте,
+   из-за чего «Дата» и «Время» оказывались разными. Жёстко уравниваем. */
+input[type="time"].field__input,
+input[type="date"].field__input {
+  height: 52px;
+  line-height: 22px;
 }
 .field__input::placeholder { color: color-mix(in srgb, var(--muted) 80%, transparent); }
 .field__input:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
