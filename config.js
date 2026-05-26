@@ -100,7 +100,7 @@ window.SITE_CONFIG = {
     {
       name: "Жанна",
       role: "Стилист-парикмахер",
-      photo: "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=600&q=85",
+      photo: "https://images.unsplash.com/photo-1554151228-14d9def656e4?w=600&q=85",
     },
     {
       name: "Саша",
@@ -108,7 +108,7 @@ window.SITE_CONFIG = {
       photo: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&q=85",
     },
     {
-      name: "Лёха",
+      name: "Алексей",
       role: "Барбер",
       photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85",
     },

@@ -867,7 +867,9 @@ input[type="time"]:hover::-webkit-calendar-picker-indicator { opacity: 1; }
 
 /* ===== FAB (плавающая кнопка записи) ===== */
 .fab {
-  position: fixed; right: 16px; bottom: 16px;
+  position: fixed; right: 16px;
+  /* Подняли выше safe-area iOS, чтобы тень не упиралась в URL-бар Safari */
+  bottom: max(20px, calc(env(safe-area-inset-bottom) + 16px));
   z-index: 60;
   display: none;
   align-items: center; gap: 10px;
@@ -875,12 +877,12 @@ input[type="time"]:hover::-webkit-calendar-picker-indicator { opacity: 1; }
   background: var(--accent);
   color: var(--paper);
   border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(184, 131, 90, .35), 0 4px 10px rgba(0,0,0,.15);
+  /* Чуть сократил тень — менее размашистая, не «обрезается» о край экрана */
+  box-shadow: 0 8px 20px rgba(184, 131, 90, .35), 0 2px 6px rgba(0,0,0,.15);
   font-family: var(--display);
   font-weight: 500;
   font-size: 15px;
   transition: transform .15s, background .15s;
-  padding-bottom: max(14px, env(safe-area-inset-bottom));
 }
 .fab:active { transform: scale(.97); background: var(--accent-dark); }
 @media (max-width: 900px) {
